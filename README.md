@@ -1,4 +1,10 @@
 Grocify
+Grocery Store
+
+---
+**NOTE**
+Before starting development, set up environment files for both the backend and frontend. Utilize dummy data from a products.json file for testing purposes. Ensure to install and add dependencies for both frontend and backend. Then, start by running both the frontend and backend servers. This ensures that the development environment  (env) is properly configured and ready for further implementation.
+---
 
 The purpose of Grocify is to establish a user-centric online grocery shopping platform, leveraging a combination of HTML, CSS, JavaScript, and React to provide a seamless and visually engaging experience. Grocify aspires to offer a contemporary, responsive, and intuitive interface that simplifies the grocery shopping process. The website's core objective is to enable users to effortlessly browse, select, and purchase grocery items. 
 
