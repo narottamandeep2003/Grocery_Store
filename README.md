@@ -3,7 +3,23 @@ Grocery Store
 
 ---
 **NOTE**
-Before starting development, set up environment files for both the backend and frontend. Utilize dummy data from a products.json file for testing purposes. Ensure to install and add dependencies for both frontend and backend. Then, start by running both the frontend and backend servers. This ensures that the development environment  (env) is properly configured and ready for further implementation.
+
+Note:
+Before diving into development, it's essential to properly configure your development environment for both the frontend and backend components of the project. Here's a quick guide to get you started:
+
+Environment Files:
+
+Set up environment files for both the backend and frontend. These files will store environment-specific configurations such as API keys, database connection strings, and other sensitive information.
+Dummy Data:
+
+Utilize dummy data from a products.json file for testing purposes. This file will contain sample product data that you can use to populate your application during development.
+Dependency Installation:
+
+Install and add dependencies for both the frontend and backend. Use package managers like npm or yarn to install the required dependencies specified in the package.json files of each component.
+Running Servers:
+
+Start by running both the frontend and backend servers. This ensures that the development environment is properly set up and ready for further implementation. You can use commands like npm start or yarn start to run the servers for each component.
+
 ---
 
 The purpose of Grocify is to establish a user-centric online grocery shopping platform, leveraging a combination of HTML, CSS, JavaScript, and React to provide a seamless and visually engaging experience. Grocify aspires to offer a contemporary, responsive, and intuitive interface that simplifies the grocery shopping process. The website's core objective is to enable users to effortlessly browse, select, and purchase grocery items. 
