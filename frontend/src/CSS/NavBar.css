@@ -1,0 +1,283 @@
+nav {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0px;
+    position: fixed;
+    background-color: white;
+    z-index: 10165161;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap');
+
+.headingNav {
+    cursor: pointer;
+    margin-left: 100px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Playfair Display', serif;
+}
+
+.navLi {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.navLi {
+    margin-bottom: 0px;
+}
+
+.navLi li {
+    margin: 0px 20px;
+}
+
+.navLi li a {
+    color: black;
+    text-decoration: none;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Playfair Display', serif;
+}
+
+.RightNavLi {
+    margin-right: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0px;
+}
+
+.RightNavLi li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 20px;
+}
+
+.RightNavLi li a {
+    text-decoration: none;
+}
+
+.Cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bi-basket2-fill {
+    width: 22px;
+    height: 22px;
+    color: rgb(0, 0, 0);
+}
+
+.Cart a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: red;
+}
+
+.TotalCartItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    font-size: .7rem;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    left: 5px;
+    border-radius: 50%;
+    /* right: 0px; */
+    color: white;
+    position: relative;
+}
+
+.signUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    padding: 3px 25px;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Playfair Display', serif;
+    transition: all .3s ease;
+}
+
+.signUp:hover {
+    background-color: black;
+    color: white;
+}
+
+.headingNav a {
+    text-decoration: none;
+    color: black;
+}
+
+.SmallScreen {
+    display: none;
+}
+
+.NavBTN {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: red;
+    width: auto;
+    height: auto;
+    display: flex;
+}
+
+.NavBTN:focus {
+    outline: none;
+    border: none;
+}
+
+.NavBTN svg {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.CartSmall {
+    display: none;
+}
+.NavBTN{
+    display: none;
+}
+@media screen and (max-width:700px) {
+
+
+    .headingNav {
+        margin-left: 10px;
+        font-size: .9rem;
+    }
+
+    .navLi {
+        display: none;
+    }
+
+    .RightNavLi {
+        display: none;
+    }
+
+    nav {
+        height: 50px;
+    }
+
+    .NavBTN {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        color: red;
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .SmallScreen {
+        margin-left: auto;
+        margin-right: 15px;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+
+    .SmallScreen li {
+        margin: 0px 5px;
+        list-style: none;
+    }
+
+    .CartSmall {
+        margin-left: auto;
+        margin-right: 15px;
+        padding: 0;
+        display: flex;
+
+        margin-bottom: 0px;
+
+    }
+
+    .CartSmall .Cart svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .CartSmall .Cart .TotalCartItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        font-size: .5rem;
+        width: 15px;
+        height: 15px;
+        top: -10px;
+        left: 5px;
+        border-radius: 50%;
+        /* right: 0px; */
+        color: white;
+        position: relative;
+    }
+
+    .SmallStore {
+        margin-left: 100%;
+        margin-right: 10px;
+        padding: 0;
+        margin: 0;
+        font-size: .8rem;
+        color: black;
+        text-decoration: none;
+        font-family: 'Dancing Script', cursive;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .SmallStore a {
+
+        color: black;
+        text-decoration: none;
+        font-family: 'Dancing Script', cursive;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .SShop {
+        color: black;
+        text-decoration: none;
+        font-family: 'Dancing Script', cursive;
+        font-family: 'Playfair Display', serif;
+        margin-right: 15px;
+        font-size: .8rem;
+        text-decoration: none;
+
+    }
+    .SShop:hover{
+        text-decoration: none;
+        color: black;
+    }
+    .CartSmall .Cart{
+        color:white;
+        text-decoration: none;
+    }
+    .Cart a:hover{
+        color:white;
+        text-decoration: none;
+    }
+}

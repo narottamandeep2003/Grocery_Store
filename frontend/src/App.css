@@ -1,0 +1,21 @@
+body{
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+
+.C{
+  z-index: 8000;
+  width:30px;
+  height: 30px;
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+  pointer-events: none;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+

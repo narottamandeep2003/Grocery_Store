@@ -1,0 +1,453 @@
+
+.ShopPage{
+    margin-top: 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ShopPageFirstSection{
+    position: fixed;
+    width: 20%;
+    border-right: 1px solid rgb(146, 146, 146);
+    /* background-color: antiquewhite; */
+    height: calc(100vw - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.ShopPageSecondSection{
+    /* border: 1px solid black; */
+    /* height: 100vw; */
+    /* margin-left: auto; */
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* height: 200vw; */
+}
+
+
+.FilterSearch{
+    z-index: 5151;
+    position: relative;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-top: 10px;
+    background-color: white;
+    
+}
+.Filter{
+    outline: none;
+    border: none;
+    border: 1px solid black;
+    background:none;
+    padding: 7px 15px;
+    margin-left: 30px;
+    width: 45%;
+    border-radius: 5px;
+}
+.Filter::placeholder{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: black;
+}
+.FilterHead{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.FilterFirst{
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.FilterFirstSvg{
+   
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.FilterFirstSvg svg{
+    font-weight: bold;
+    color: black;
+    width: 15px;
+    height: 15px;
+}
+.FilterTitle{
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font: weight 500px;
+    font-size: .9em;
+}
+
+.FilterBtn{
+    background:none;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.FilterBtnSearch{
+    margin-left: 30px;
+    border: 1px solid black;
+    background:black;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 7px 10px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.Break{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(108, 108, 108);
+}
+.FilterList{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.FilterListCat{
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 5px;
+    width: 80%;
+}
+.innerFilterList{
+    margin-top: 10px;
+    width: 80%;
+}
+
+.FilterItem input{
+    user-select: none;
+}
+.FilterItem label{
+    user-select: none;
+    cursor: pointer;
+}
+.FilterSearch{
+    padding-bottom: 10px;
+    /* border: 1px solid red; */
+    /* border-bottom: 1px solid black; */
+    width: 100vw;
+    margin-top: 70px;
+}
+.FilterSort{
+    margin-left: auto;
+    padding: 2px 10px;
+    margin-right: 100px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flexbox;
+    color: rgb(45, 45, 45);
+    /* border: 1px solid rgb(131, 131, 131); */
+}
+
+.Sticky {
+    position: relative;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    width: 70%;
+    /* padding-bottom: 20px; */
+    /* border-bottom: 1px solid rgb(77, 77, 77); */
+}
+
+.searchBox {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.searchBox input {
+
+    /* padding: 4px 10px; */
+    outline: none;
+    border: 1px solid rgb(84, 84, 84);
+    border-right: none;
+    border-radius: 20px;
+    font-size: .9rem;
+    padding: 0px 10px;
+    color: rgb(42, 42, 42);
+    font-family: Arial, Helvetica, sans-serif;
+    height: 35px;
+    display: flexbox;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.searchBox input::placeholder {
+    font-size: .9rem;
+    color: rgb(42, 42, 42);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.searchBox button {
+    border: 1px solid rgb(84, 84, 84);
+    border-left: none;
+    /* padding: 5px; */
+    height: 35px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-right: 10px;
+    /* margin: 0px 15px; */
+    /* width: 32px;
+    height: 32px; */
+    /* background-color: black; */
+    /* border-radius: 50%; */
+    /* margin-left: 20px; */
+    /* outline: none; */
+    /* border: none; */
+
+    justify-content: center;
+    outline: none;
+    align-items: center;
+}
+
+.SearchBtn {
+    background: none;
+}
+
+.bi-search {
+    color: rgb(44, 44, 44);
+    width: 18px;
+    height: 18px;
+}
+
+.topic {
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    height: 40px;
+    display: flex;
+}
+
+#addTopic,
+#ApplyTopic,
+#Top {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+    cursor: pointer;
+    font-size: .9rem;
+    border-radius: 25px;
+    margin: 0px 5px;
+    padding: 5px 15px;
+    background-color: rgb(203, 203, 203);
+    color: black;
+}
+
+.empty {
+    width: 30px;
+    height: 30px;
+    margin: 0px 2px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#buttonRight,
+#buttonLeft {
+    cursor: pointer;
+    margin: 0px 2px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(72, 72, 72);
+}
+
+
+
+.topic {
+    width: 50%;
+}
+
+
+.boxTopic {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomeTopicBox span {
+    cursor: pointer;
+    margin: 5px 5px;
+    font-size: .8rem;
+    border-radius: 25px;
+    padding: 5px 15px;
+}
+
+.topicInner {
+    margin: 0px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+.leftBtnTopic,
+.rightBtnTopic {
+    z-index: 10;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    /* border-radius: 40%; */
+    color: rgb(52, 52, 52);
+}
+
+.leftBtnTopic {
+    box-shadow: 4px 0px 5px rgb(255, 255, 255);
+}
+
+.rightBtnTopic {
+    box-shadow: -4px 0px 5px rgb(255, 255, 255);
+}
+
+.leftBtnTopic svg,
+.rightBtnTopic svg {
+    width: 25px;
+    height: 25px;
+}
+
+.ScrollTipicBox {
+padding: 0px 5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 85%;
+    min-width: auto;
+    overflow-x: hidden;
+}
+
+.topics {
+    cursor: pointer;
+    margin: 0px 2px;
+    font-size: .9rem;
+    border-radius: 25px;
+    padding: 5px 10px;
+
+}
+
+.CTopic {
+    background-color: rgb(215, 215, 215);
+    color: black;
+}
+
+.Topic {
+    background-color: rgb(220, 220, 220);
+    color: black;
+}
+
+.targetTopic {
+    background-color: black;
+    color: white;
+}
+
+.ShopMainPAge{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#dropdownMenu2{
+z-index: 15;
+}
+#Apply{
+    background-color: black;
+    color: white;
+margin: 0px 10px;
+}
+@media screen and (max-width:700px) {
+    .Sticky {
+        position: relative;
+        -webkit-user-select: none;
+        /* Safari */
+        -ms-user-select: none;
+        /* IE 10 and IE 11 */
+        user-select: none;
+        /* Standard syntax */
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 80px;
+        width: 100%;
+        /* padding-bottom: 20px; */
+        /* border-bottom: 1px solid rgb(77, 77, 77); */
+    }
+    .topic {
+        margin: 5px 0px;
+        width: 95%;
+    }
+    .HomeTopicBox span {
+        cursor: pointer;
+        margin: 5px 5px;
+        font-size: .8rem;
+        border-radius: 25px;
+        padding: 5px 10px;
+    }
+    .dropdown{
+        display: none;
+    }
+    #Apply{
+        width: 95%;
+        border: none;
+        outline: none;
+    }
+    #Apply:focus{
+        border: none;
+        outline: none;
+    }
+    .ShopPage{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ShopPageSecondSection{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .searchBox input{
+        width: 85vw;
+    }
+}
