@@ -16,8 +16,7 @@ import SignUp from './components/SignUp';
 import List from './List';
 import Payment from './components/Payment';
 import { useState } from 'react';
-
-
+// require('dotenv').config()
 function App() {
   const [hash,setHash]=useState(new Map());
   const [cartList,setcartList]=useState([])
