@@ -10,6 +10,7 @@ nav {
     z-index: 10165161;
 }
 
+
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap');
 
 .headingNav {
@@ -38,7 +39,9 @@ nav {
 .navLi li {
     margin: 0px 20px;
 }
-
+.mobileNav{
+    display: none;
+}
 .navLi li a {
     color: black;
     text-decoration: none;
@@ -162,10 +165,10 @@ nav {
 }
 @media screen and (max-width:700px) {
 
-
+   
     .headingNav {
         margin-left: 10px;
-        font-size: .9rem;
+        font-size: 1rem;
     }
 
     .navLi {
@@ -177,9 +180,35 @@ nav {
     }
 
     nav {
-        height: 50px;
+        z-index: 5000;
+        height: 70px;
     }
-
+    .mobileNav{
+        position: absolute;
+        left: 0px;
+        top: 70px;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobileUl{
+        list-style: none;
+        color: black;
+    }
+    .mobileUl li{
+        text-align: center;
+        color: black;
+        margin: 5px 0px;
+    }
+    .mobileUl li a{
+        color: black;
+        font-size: 1.2rem;
+    }
     .NavBTN {
         cursor: pointer;
         outline: none;
@@ -191,6 +220,7 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 20px;
     }
 
     .SmallScreen {
@@ -200,6 +230,7 @@ nav {
         height: 100%;
         align-items: center;
         margin-bottom: 0px;
+        z-index: 10000000;
     }
 
     .SmallScreen li {
@@ -218,8 +249,8 @@ nav {
     }
 
     .CartSmall .Cart svg {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
     }
 
     .CartSmall .Cart .TotalCartItem {
@@ -228,14 +259,15 @@ nav {
         align-items: center;
         background-color: red;
         font-size: .5rem;
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
         top: -10px;
         left: 5px;
         border-radius: 50%;
         /* right: 0px; */
         color: white;
         position: relative;
+        
     }
 
     .SmallStore {
@@ -264,7 +296,7 @@ nav {
         font-family: 'Dancing Script', cursive;
         font-family: 'Playfair Display', serif;
         margin-right: 15px;
-        font-size: .8rem;
+        font-size: 1rem;
         text-decoration: none;
 
     }

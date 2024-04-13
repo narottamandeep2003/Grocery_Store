@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@uidotdev/usehooks": "^2.4.0",
     "dotenv": "^16.4.5",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^10.18.0",
     "gsap": "^3.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

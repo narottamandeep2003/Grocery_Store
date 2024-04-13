@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 export default function Shop() {
     let store = useContext(UserContext)
     const [topicsList, settopicsList] = useState([])
-    const [search,setSearch]=useState("");
+    const [search, setSearch] = useState("");
     const TopicOnClick = (e, name) => {
         if (e.currentTarget.classList.contains('Topic')) {
 
@@ -31,34 +31,84 @@ export default function Shop() {
 
         }
     };
-    let handleApply = () => {
-        let newlist = (store["list"].filter((e) => {
-
-            if (store.searchList.has("All"))
-                return true
-            else if (store.searchList.has(e.category))
-                return true
-            else return false
-        }))
-        store.setSearchcartList(newlist)
+    let handleClick = () => {
+        let option;
+        let category = [];
+        if (store.searchList.has("All")) {
+            option = {
+                all: true,
+                search: search,
+                category: category
+            }
+        }
+        else {
+            store.searchList.forEach(element => {
+                category.push(element)
+            });
+            option = {
+                all: false,
+                search: search,
+                category: category
+            }
+        }
+        fetch(process.env.REACT_APP_API_KEY + "getProducts", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(option),
+        }).then(
+            (res) => {
+                return res.json();
+            }
+        ).then((data) => {
+            console.log(data)
+            if (data.status) {
+                store.setSearchcartList(data.products)
+            }
+            else {
+                alert("error")
+            }
+        })
+            .catch((err) => {
+                console.log(err)
+                alert("error")
+            })
     }
-    let handleClick=()=>{
-        console.log(search)
-        const regex = new RegExp(`${search.toLowerCase()}`);
-        let newlist = (store["list"].filter((e) => {
-            let str=e.name.toLowerCase()
-            return regex.test(str)
-        }))
-        store.setSearchcartList(newlist)
+
+
+    let handleSort = (str) => {
+        let product = store.SearchcartList;
+        if (str === "lowToHighi") {
+            let newProduct = [...product].sort((a, b) => a.price - b.price);
+            // console.log(newProduct);
+            store.setSearchcartList(newProduct);
+        }
+        else if (str === "highiToLow") {
+            let newProduct = [...product].sort((a, b) => b.price - a.price);
+            // console.log(newProduct);
+            store.setSearchcartList(newProduct);
+        }
+        else if(str==="Name"){
+            let newProduct = [...product].sort((a, b) => a.name.localeCompare(b.name));
+            // console.log(newProduct);
+            store.setSearchcartList(newProduct);
+        }
+
     }
     useEffect(() => {
-        settopicsList(["All", "Dairy", "fruit", "Household", "Snacks", "Vegetables"])
-    }, [])
+        settopicsList(["All", "Dairy", "fruit", "Household", "Snacks", "Vegetables"]);
+        handleClick();
+    }, []);
+
     return (
         <div className='ShopMainPAge'>
             <div className="Sticky">
                 <div className="searchBox">
-                    <input type="text" name="Search" id="Search" placeholder='Search' value={search} onChange={(e)=>{setSearch(e.target.value)}} />
+                    <input type="text" name="Search" id="Search" placeholder='Search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
                     <button className='SearchBtn' onClick={handleClick}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -89,7 +139,7 @@ export default function Shop() {
                     </div>
 
                 </div>
-                <button className="btn btn-Primary  " type="button" id="Apply" aria-haspopup="true" aria-expanded="false" onClick={handleApply}>
+                <button className="btn btn-Primary  " type="button" id="Apply" aria-haspopup="true" aria-expanded="false" onClick={handleClick}>
                     Apply
                 </button>
                 <div className="dropdown">
@@ -97,9 +147,19 @@ export default function Shop() {
                         Filter
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button className="dropdown-item" type="button">Price Low to High</button>
-                        <button className="dropdown-item" type="button">Price High to low</button>
-                        <button className="dropdown-item" type="button">Sort by Name</button>
+                        <button className="dropdown-item" type="button" onClick={() => {
+                            handleSort("lowToHighi")
+                        }}>Price Low to High</button>
+                        <button className="dropdown-item" type="button"
+                            onClick={() => {
+                                handleSort("highiToLow")
+                            }}
+                        >Price High to low</button>
+                        <button className="dropdown-item" type="button"
+                            onClick={() => {
+                                handleSort("Name")
+                            }}
+                        >Sort by Name</button>
 
                     </div>
                 </div>

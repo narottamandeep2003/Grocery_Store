@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../Store'
 
 export default function Login() {
+    const store = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const emailref = useRef();
@@ -35,6 +37,7 @@ export default function Login() {
         ).then((data) => {
             if (data.status) {
                 localStorage.setItem("user",JSON.stringify(data.user))
+                store.setLogin(true)
                 navigate('/');
             }
             else {

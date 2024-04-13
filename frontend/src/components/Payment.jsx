@@ -1,19 +1,93 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { UserContext } from '../Store'
 import { useNavigate } from 'react-router-dom'
 
 export default function Payment() {
     const store = useContext(UserContext)
+    const [form, setForm] = useState({ cardHolderName: "", cardNumber: "", Expiry_Date_MM: "", Expiry_Date_YY: "", CVV: "", total: store.cartDetail.total })
+    const cardHolderName = useRef()
+    const cardNumber = useRef()
+    const Expiry_Date_MM = useRef()
+    const Expiry_Date_YY = useRef()
+    const CVV = useRef()
     const navigate = useNavigate();
-    let handleClick=()=>{
-        navigate("/")
+    let handleClick = (e) => {
+        e.preventDefault();
+        let user = localStorage.getItem("user")
+        if (!user) return
+        let userid = JSON.parse(user);
+        if (form.total === 0)
+            return
+        cardHolderName.current.style.borderColor = "black"
+        cardNumber.current.style.borderColor = "black"
+        Expiry_Date_MM.current.style.borderColor = "black"
+        Expiry_Date_YY.current.style.borderColor = "black"
+        CVV.current.style.borderColor = "black"
+        let isCorrect = true
+        if (form.cardHolderName.length === 0) {
+            cardHolderName.current.style.borderColor = "red";
+            isCorrect = false;
+        }
+        if (form.cardNumber.length === 0 || !Number.isInteger(Number(form.cardNumber)) || form.cardNumber.length !== 16) {
+            cardNumber.current.style.borderColor = "red";
+            isCorrect = false;
+        }
+
+        if (form.Expiry_Date_MM.length === 0 || !Number.isInteger(Number(form.Expiry_Date_MM)) || form.Expiry_Date_MM.length !== 2) {
+            Expiry_Date_MM.current.style.borderColor = "red";
+            isCorrect = false;
+        }
+
+        if (form.Expiry_Date_YY.length === 0 || !Number.isInteger(Number(form.Expiry_Date_YY)) || form.Expiry_Date_YY.length !== 4) {
+            Expiry_Date_YY.current.style.borderColor = "red";
+            isCorrect = false;
+        }
+
+        if (form.CVV.length === 0 || !Number.isInteger(Number(form.CVV)) || form.CVV.length !== 3) {
+            CVV.current.style.borderColor = "red";
+            isCorrect = false;
+        }
+        console.log("s")
+        if (!isCorrect) return;
+
+        fetch(process.env.REACT_APP_API_KEY + "payment", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...form, products: store.cartList, userid: userid._id }),
+        }).then(
+            (res) => {
+                return res.json();
+            }
+        ).then((data) => {
+            console.log(data)
+            if (data.status) {
+                setForm({ cardHolderName: "", cardNumber: "", Expiry_Date_MM: "", Expiry_Date_YY: "", CVV: "", total: 0 })
+                store.setCartDetail({"subcost":0,"discount":0,"tax":0,"total":0})
+                store.setcartList([])
+                alert("Payment successful")
+                navigate("/")
+            }
+            else {
+                alert("error")
+            }
+        })
+            .catch((err) => {
+                console.log(err)
+                alert("error")
+            })
+
     }
     return (
         <div className='PaymentPage'>
             <div className="PaymentWindow">
 
                 <img src="./I4.jpg" alt="..." className='PaymetLeftImg' />
-                <form className="PaymentForm" onSubmit={(e)=>{e.preventDefault()}}>
+                <form className="PaymentForm" onSubmit={(e) => {  handleClick(e) }}>
                     <p className='PaymentHeading'>Your details
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
@@ -43,7 +117,9 @@ export default function Payment() {
                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
                                 </svg>
                             </span>
-                            <input type="text" id='CardHolderName' placeholder='Card Holder Name' />
+                            <input type="text" id='CardHolderName' placeholder='Card Holder Name' ref={cardHolderName} onChange={(e) => {
+                                setForm({ ...form, cardHolderName: e.target.value })
+                            }} />
                         </div>
                     </div>
                     <div className="PaymentItem">
@@ -54,21 +130,29 @@ export default function Payment() {
                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z" />
                                 </svg>
                             </span>
-                            <input type="text" id='CardNo' placeholder='XXXX XXXX XXXX XXXX' />
+                            <input type="text" id='CardNo' placeholder='XXXX XXXX XXXX XXXX' ref={cardNumber} onChange={(e) => {
+                                setForm({ ...form, cardNumber: e.target.value })
+                            }} />
                         </div>
                     </div>
                     <div className="PaymentItem2">
                         <div className="payItem1">
                             <label htmlFor="DateMM">Expiry Date</label>
                             <div className="DateItem">
-                                <input type="text" id='DateMM' placeholder='MM' />
-                                <input type="text" id='DateYY' placeholder='YYYY' />
+                                <input type="text" id='DateMM' placeholder='MM' ref={Expiry_Date_MM} onChange={(e) => {
+                                    setForm({ ...form, Expiry_Date_MM: e.target.value })
+                                }} />
+                                <input type="text" id='DateYY' placeholder='YYYY' ref={Expiry_Date_YY} onChange={(e) => {
+                                    setForm({ ...form, Expiry_Date_YY: e.target.value })
+                                }} />
                             </div>
                         </div>
                         <div className="payItem1">
                             <label htmlFor="CVV">CVV</label>
                             <div className="CVV">
-                                <input type="text" id='CVV' placeholder='1 2 3' />
+                                <input type="text" id='CVV' placeholder='1 2 3' ref={CVV} onChange={(e) => {
+                                    setForm({ ...form, CVV: e.target.value })
+                                }} />
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-credit-card-2-back-fill" viewBox="0 0 16 16">
                                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z" />
